@@ -8,7 +8,10 @@
             <label  class="form-label">Desc : </label>
             <input typr="text" class="form-control" wire:model="desc">
         </div>
-{{--        <button type="button" wire:click="doSomething" class="btn btn-primary">submit</button>--}}
-        <input type="text" wire:keydown.enter="doSomething">
+       <button type="submit" class="btn btn-primary">submit</button>
+       <input type="text" wire:keydown.shift.enter="doSomething($event.target.value)">
+        <div wire:loading>
+            loading.....
+        </div>
     </form>
 </section>

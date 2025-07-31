@@ -13,8 +13,8 @@ class CreatePost extends Component
 //        dd($this->title , $this->desc);
     }
 
-    public function doSomething(){
-        dd('n');
+    public function doSomething($a){
+        dd($a);
     }
     public function render()
     {
