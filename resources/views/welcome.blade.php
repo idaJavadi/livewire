@@ -8,6 +8,13 @@
 
 
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <livewire:create-post />
+            </div>
+        </div>
+    </div>
 
 
 
