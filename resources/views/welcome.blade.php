@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <livewire:create-post />
+                <livewire:course/>
             </div>
         </div>
     </div>
