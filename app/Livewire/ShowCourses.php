@@ -4,10 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-class ShowCategories extends Component
+class ShowCourses extends Component
 {
+    public $course;
     public function render()
     {
-        return view('livewire.show-categories');
+        return view('livewire.show-courses');
     }
 }
