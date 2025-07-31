@@ -1,1 +1,1 @@
-<p>hello</p>
+{{dd($course['name'])}}
