@@ -27,7 +27,9 @@ class Courses extends Component
     {
         $course = CourseModel::findOrFail($id);
         $course->update(['status' => $value]);
+        $this->dispatch('showToast');
     }
+
 
     public function save()
     {
