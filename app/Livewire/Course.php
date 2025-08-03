@@ -2,26 +2,33 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Course as CourseModel;
+use Livewire\Component;
+use Livewire\Attributes\Js;
+
 
 class Course extends Component
 {
-    public $search = "";
-    public $sort = true ;
-    public $name;
+    public CourseModel $course;
 
-    public function delete(CourseModel $course){
-//        $course = CourseModel::find($id);
-        $course->delete();
-        return 'delete';
+    public function mount(CourseModel $course)
+    {
+        $this->course = $course;
     }
+
+    // #[Renderless]
+    public function incrementView()
+    {
+        $this->course->modelIncrementView();
+        // $this->skipRender();
+    }
+
+
+
     public function render()
     {
-//        dump($this->search);
-        $courses = CourseModel::where('name', 'like', '%' . $this->search . '%')->orderBy('id' , $this->sort ? 'asc':'desc')->get();
-        return view('livewire.course', [
-            'courses' => $courses
-        ]);
+        // dump($this->search);
+        $course = $this->course;
+        return view('livewire.course', compact('course'));
     }
 }
