@@ -26,6 +26,15 @@
         });
 
     </script>
+    <script>
+        window.addEventListener('showModal' , (e)=>{
+            const myShowModal = document.getElementById('showModal');
+            const modal = bootstrap.Modal.getOrCreateInstance(myShowModal);
+            // console.log(e.detail)
+            modal.show();
+        });
+
+    </script>
 </body>
 
 </html>

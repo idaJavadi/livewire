@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col">
             <div class="d-flex justify-content-end">
-{{--                <a href="{{ route('courses.create') }}" class="btn btn-success">create</a>--}}
+                {{-- <a href="{{ route('courses.create') }}" class="btn btn-success">create</a> --}}
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    create course
+                    create
                 </button>
             </div>
             <div>
@@ -20,6 +20,7 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Price</th>
+                        <th>Status</th>
                         <th>Setting</th>
                     </tr>
                     @foreach ($courses as $course)
@@ -28,35 +29,42 @@
                             <td>{{ $course->name }}</td>
                             <td>{{ $course->price }}</td>
                             <td>
-                                {{-- <button wire:confirm="ایا از حذف داده ها اطمینان دارید؟" wire:click="delete({{ $course->id }})"
-                                    class="btn btn-danger">Delete</button>   --}}
+                                <select class="form-control" wire:change="changeStatus($event.target.value, $event.target.dataset.id)" data-id="{{ $course->id }}">
+                                    <option value="1" {{ $course->status ? 'selected' : '' }}>enable</option>
+                                    <option value="0" {{ $course->status ? '' : 'selected' }}>disable</option>
+                                </select>
+                            </td>
+                            <td>
 
-                                <button wire:confirm.prompt="are u sure? type hassan to delete|hassan"
-                                    wire:click="delete({{ $course->id }})" class="btn btn-danger">Delete</button>
+                                <button wire:confirm.prompt="are u sure? type yes to delete|yes"
+                                        wire:click="delete({{ $course->id }})" class="btn btn-danger">Delete</button>
 
-                                <a href="{{ route('courses.show', $course) }}" class="btn btn-primary">Show</a>
+                                {{-- <a href="{{ route('courses.show', $course) }}" class="btn btn-primary">Show</a> --}}
+                                <button wire:click="show({{ $course->id }})" class="btn btn-primary">Show</button>
                             </td>
                         </tr>
                     @endforeach
 
                 </table>
 
-                {{-- <button class="btn btn-info" @click="$wire.$refresh()">refresh</button> --}}
             </div>
 
         </div>
     </div>
 
 
-    <div  wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel"> create course </h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">create course</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container border my-4 py-2 rounded">
+                    <div class="container">
                         <div class="row">
                             <div class="col">
                                 <section>
@@ -65,14 +73,16 @@
                                             <label class="form-label">Name : </label>
                                             <input type="text" class="form-control" wire:model="name">
                                             @error('name')
-                                            <span class="text-bg-danger px-3 py-1 rounded my-2"> {{$message}} </span>
+                                            <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
+                                                    {{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Price : </label>
                                             <input type="text" class="form-control" wire:model="price">
                                             @error('price')
-                                            <span class="text-bg-danger px-3 py-1 rounded my-2">{{$message}} </span>
+                                            <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
+                                                    {{ $message }}</span>
                                             @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -88,6 +98,37 @@
                     </div>
 
                 </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="showModalLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                @if ($singleCourse)
+                                    <h5 class="card-title">{{ $singleCourse->name }}</h5>
+                                    <p class="card-text">{{ $singleCourse->price }}</p>
+                                    <p class="card-text">{{ $singleCourse->view }}</p>
+                                @endif
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>

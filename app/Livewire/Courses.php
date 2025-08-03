@@ -13,7 +13,9 @@ class Courses extends Component
     public $search = "";
     public $sort = true;
     public $name = "";
-    public $price= "";
+    public $price = "";
+    public $singleCourse = null;
+
 
     public function delete(CourseModel $course)
     {
@@ -21,18 +23,27 @@ class Courses extends Component
         return 'Delete Course Was Successful';
     }
 
+    public function changeStatus($value, $id)
+    {
+        $course = CourseModel::findOrFail($id);
+        $course->update(['status' => $value]);
+    }
+
     public function save()
     {
-
-        $inputs = ['name' => $this->name, 'price' => $this->price];
         $validated = $this->validate([
-            'name' => 'required|string',
-            'price' => 'required|numeric'
+            'name' => 'required',
+            'price' => 'required',
         ]);
         CourseModel::create($validated);
         $this->dispatch('closeModal');
     }
 
+    public function show($id)
+    {
+        $this->singleCourse = CourseModel::findOrFail($id);
+        $this->dispatch('showModal');
+    }
 
 
     public function render()
