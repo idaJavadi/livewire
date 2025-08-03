@@ -7,6 +7,10 @@ use App\Models\Course as CourseModel;
 
 class Course extends Component
 {
+    public $search = "";
+    public $sort = true ;
+    public $name;
+
     public function delete(CourseModel $course){
 //        $course = CourseModel::find($id);
         $course->delete();
@@ -14,7 +18,10 @@ class Course extends Component
     }
     public function render()
     {
-        $courses = CourseModel::all();
-        return view('livewire.course' , compact('courses'));
+//        dump($this->search);
+        $courses = CourseModel::where('name', 'like', '%' . $this->search . '%')->orderBy('id' , $this->sort ? 'asc':'desc')->get();
+        return view('livewire.course', [
+            'courses' => $courses
+        ]);
     }
 }

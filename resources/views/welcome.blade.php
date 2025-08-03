@@ -11,7 +11,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <livewire:course/>
+{{--                <livewire:course/>--}}
+                <livewire:home />
             </div>
         </div>
     </div>
