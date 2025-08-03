@@ -6,10 +6,16 @@
                     <div class="mb-3">
                         <label class="form-label">Name : </label>
                         <input type="text" class="form-control" wire:model="name">
+                        @error('name')
+                        <span class="text-bg-danger px-3 py-1 rounded my-2"> {{$message}} </span>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Price : </label>
                         <input type="text" class="form-control" wire:model="price">
+                        @error('price')
+                        <span class="text-bg-danger px-3 py-1 rounded my-2">{{$message}} </span>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
 
