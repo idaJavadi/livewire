@@ -12,13 +12,27 @@ class Courses extends Component
 
     public $search = "";
     public $sort = true;
-
+    public $name = "";
+    public $price= "";
 
     public function delete(CourseModel $course)
     {
         $course->delete();
         return 'Delete Course Was Successful';
     }
+
+    public function save()
+    {
+
+        $inputs = ['name' => $this->name, 'price' => $this->price];
+        $validated = $this->validate([
+            'name' => 'required|string',
+            'price' => 'required|numeric'
+        ]);
+        CourseModel::create($validated);
+        $this->dispatch('closeModal');
+    }
+
 
 
     public function render()

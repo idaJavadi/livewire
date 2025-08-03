@@ -2,7 +2,10 @@
     <div class="row">
         <div class="col">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('courses.create') }}" class="btn btn-success">create</a>
+{{--                <a href="{{ route('courses.create') }}" class="btn btn-success">create</a>--}}
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    create course
+                </button>
             </div>
             <div>
                 <div class="col-4 mb-4">
@@ -43,4 +46,50 @@
 
         </div>
     </div>
+
+
+    <div  wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel"> create course </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container border my-4 py-2 rounded">
+                        <div class="row">
+                            <div class="col">
+                                <section>
+                                    <form wire:submit.prevent="save">
+                                        <div class="mb-3">
+                                            <label class="form-label">Name : </label>
+                                            <input type="text" class="form-control" wire:model="name">
+                                            @error('name')
+                                            <span class="text-bg-danger px-3 py-1 rounded my-2"> {{$message}} </span>
+                                            @enderror
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Price : </label>
+                                            <input type="text" class="form-control" wire:model="price">
+                                            @error('price')
+                                            <span class="text-bg-danger px-3 py-1 rounded my-2">{{$message}} </span>
+                                            @enderror
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                                        <div wire:loading class="spinner-border" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </form>
+                                </section>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
