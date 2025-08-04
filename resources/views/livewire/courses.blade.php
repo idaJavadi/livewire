@@ -65,7 +65,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        {{ $singleCourse ? 'Edit Post' : 'Create Post' }}
+                        {{ $form->singleCourse ? 'Edit Post' : 'Create Post' }}
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -74,8 +74,7 @@
                         <div class="row">
                             <div class="col">
                                 <section>
-{{--                                    <form @if($singleCourse) wire:submit.prevent="update({{ $singleCourse->id }})" @else wire:submit.prevent="save" @endif>--}}
-                                        <form wire:submit.prevent="save">
+                                    <form @if( $form->singleCourse) wire:submit.prevent="update()" @else wire:submit.prevent="save" @endif>
                                         <div class="mb-3">
                                             <label class="form-label">Name : </label>
 {{--                                            <input type="text"--}}
@@ -132,10 +131,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col">
-                                @if ($singleCourse)
-                                    <h5 class="card-title">{{ $singleCourse->name }}</h5>
-                                    <p class="card-text">{{ $singleCourse->price }}</p>
-                                    <p class="card-text">{{ $singleCourse->view }}</p>
+                                @if ( $form->singleCourse)
+                                    <h5 class="card-title">{{  $form->singleCourse->name }}</h5>
+                                    <p class="card-text">{{  $form->singleCourse->price }}</p>
+                                    <p class="card-text">{{  $form->singleCourse->view }}</p>
                                 @endif
 
                             </div>
