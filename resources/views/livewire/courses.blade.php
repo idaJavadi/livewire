@@ -81,7 +81,8 @@
 {{--                                                value="{{ $name ? $name : '' }}"--}}
 {{--                                                class="form-control" wire:model.change="name">--}}
                                             <input type="text"
-                                                   class="form-control" wire:model="form.name">
+                                                   class="form-control" wire:model.blur="form.name" wire:dirty.class="border border-4 border-danger">
+                                                <div wire:dirty wire:target="form.name">ذخیره نشده</div>
                                             @error('form.name')
                                                 <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
                                                     {{ $message }}</span>
@@ -93,7 +94,8 @@
 {{--                                                value="{{ $price ? $price : '' }}"--}}
 {{--                                                class="form-control" wire:model.change="price">--}}
                                             <input type="text"
-                                                   class="form-control" wire:model="form.price">
+                                                   class="form-control" wire:model.blur="form.price" wire:dirty.class="border border-4 border-danger" >
+                                                <div wire:dirty wire:target="form.price">ذخیره نشده</div>
                                             @error('form.price')
                                                 <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
                                                     {{ $message }}</span>

@@ -29,6 +29,13 @@ class Courses extends Component
         $this->dispatch('showToast');
     }
 
+    public function updated($name , $value){
+        $name = explode(".", $name)[1];
+        $this->form->singleCourse->update([
+           $name => $value
+        ]);
+    }
+
     public function edit($id)
     {
         $this->form->setSingleCourse($id);
