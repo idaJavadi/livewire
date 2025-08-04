@@ -53,6 +53,10 @@
 
             </div>
 
+            <section>
+                {{$courses->links()}}
+            </section>
+
         </div>
     </div>
 

@@ -4,12 +4,15 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\CourseForm;
 use App\Models\Course as CourseModel;
-
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 
 class Courses extends Component
 {
+    use WithPagination , WithoutUrlPagination;
+
     public $search = "";
     public $sort = true;
 
@@ -63,7 +66,7 @@ class Courses extends Component
 
     public function render()
     {
-        $courses = CourseModel::where('name', 'LIKE', "%{$this->search}%")->orderBy('id', $this->sort ? 'asc' : 'desc')->get();
+        $courses = CourseModel::where('name', 'LIKE', "%{$this->search}%")->orderBy('id', $this->sort ? 'asc' : 'desc')->paginate(3);
         return view('livewire.courses', compact('courses'));
     }
 }
