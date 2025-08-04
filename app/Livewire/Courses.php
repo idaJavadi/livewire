@@ -17,6 +17,11 @@ class Courses extends Component
     public $singleCourse = null;
 
 
+    public function resetAll()
+    {
+        $this->reset();
+    }
+
     public function delete(CourseModel $course)
     {
         $course->delete();
@@ -30,6 +35,24 @@ class Courses extends Component
         $this->dispatch('showToast');
     }
 
+    public function edit($id)
+    {
+        $this->singleCourse = CourseModel::findOrFail($id);
+        $this->name = $this->singleCourse->name;
+        $this->price = $this->singleCourse->price;
+        $this->dispatch('showEditModal');
+    }
+
+    public function update($id)
+    {
+        $validated = $this->validate([
+            'name' => 'required',
+            'price' => 'required',
+        ]);
+        $course = CourseModel::findOrFail($id);
+        $course->update($validated);
+        $this->dispatch('closeModal');
+    }
 
     public function save()
     {
