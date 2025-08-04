@@ -3,18 +3,28 @@
 namespace App\Livewire;
 
 use App\Models\Course as CourseModel;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\Attributes\Js;
 
 
 class Courses extends Component
 {
-
+    public $singleCourse = null;
     public $search = "";
     public $sort = true;
+
+    #[validate]
     public $name = "";
     public $price = "";
-    public $singleCourse = null;
+
+    public function rules(){
+        return [
+            'name'=>'required|min:1|max:4',
+            'price'=>'required|numeric',
+        ];
+    }
+
 
 
     public function resetAll()

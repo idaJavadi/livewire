@@ -79,7 +79,7 @@
                                             <label class="form-label">Name : </label>
                                             <input type="text"
                                                 value="{{ $name ? $name : '' }}"
-                                                class="form-control" wire:model="name">
+                                                class="form-control" wire:model.change="name">
                                             @error('name')
                                                 <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
                                                     {{ $message }}</span>
@@ -89,7 +89,7 @@
                                             <label class="form-label">Price : </label>
                                             <input type="text"
                                                 value="{{ $price ? $price : '' }}"
-                                                class="form-control" wire:model="price">
+                                                class="form-control" wire:model.change="price">
                                             @error('price')
                                                 <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
                                                     {{ $message }}</span>
