@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class Home extends Component
 {
-    public  $name = 'hassan';
+    public  $name = 'ida';
 
     public function changeName($name)
     {

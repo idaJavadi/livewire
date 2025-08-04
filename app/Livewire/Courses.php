@@ -15,16 +15,17 @@ class Courses extends Component
 
     public CourseForm $form;
 
-    public function delete(CourseModel $course)
+    public function delete($id)
     {
-        $course->delete();
+        $this->form->setSingleCourse($id);
+        $this->form->delete();
         return 'Delete Course Was Successful';
     }
 
     public function changeStatus($value, $id)
     {
-        $course = CourseModel::findOrFail($id);
-        $course->update(['status' => $value]);
+        $this->form->setSingleCourse($id);
+        $this->form->updateStatus($value);
         $this->dispatch('showToast');
     }
 

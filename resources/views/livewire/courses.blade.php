@@ -39,7 +39,7 @@
                             </td>
                             <td>
 
-                                <button wire:confirm.prompt="are u sure? type hassan to delete|hassan"
+                                <button wire:confirm.prompt="are u sure? type yes to delete|yes"
                                     wire:click="delete({{ $course->id }})" class="btn btn-danger">Delete</button>
 
                                 {{-- <a href="{{ route('courses.show', $course) }}" class="btn btn-primary">Show</a> --}}
@@ -134,7 +134,6 @@
                                 @if ( $form->singleCourse)
                                     <h5 class="card-title">{{  $form->singleCourse->name }}</h5>
                                     <p class="card-text">{{  $form->singleCourse->price }}</p>
-                                    <p class="card-text">{{  $form->singleCourse->view }}</p>
                                 @endif
 
                             </div>

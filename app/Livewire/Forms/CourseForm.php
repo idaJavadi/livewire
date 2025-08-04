@@ -26,10 +26,21 @@ class CourseForm extends Form
     public function store(){
         $this->validate();
         Course::create($this->all());
+        $this->reset();
     }
 
     public function update(){
         $this->validate();
         $this->singleCourse->update($this->all());
     }
+
+    public function updateStatus($value){
+        $this->singleCourse->update(['status' => $value]);
+    }
+
+    public function delete(){
+        $this->singleCourse->delete();
+    }
+
+
 }
