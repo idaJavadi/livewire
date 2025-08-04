@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\CourseForm;
 use App\Models\Course as CourseModel;
-use Livewire\Attributes\Validate;
+
 use Livewire\Component;
-use Livewire\Attributes\Js;
 
 
 class Courses extends Component
@@ -14,23 +14,25 @@ class Courses extends Component
     public $search = "";
     public $sort = true;
 
-    #[validate]
-    public $name = "";
-    public $price = "";
+    public CourseForm $form;
 
-    public function rules(){
-        return [
-            'name'=>'required|min:1|max:4',
-            'price'=>'required|numeric',
-        ];
-    }
+//    #[validate]
+//    public $name = "";
+//    public $price = "";
+
+//    public function rules(){
+//        return [
+//            'name'=>'required|min:1|max:4',
+//            'price'=>'required|numeric',
+//        ];
+//    }
 
 
 
-    public function resetAll()
-    {
-        $this->reset();
-    }
+//    public function resetAll()
+//    {
+//        $this->reset();
+//    }
 
     public function delete(CourseModel $course)
     {
@@ -47,10 +49,10 @@ class Courses extends Component
 
     public function edit($id)
     {
-        $this->singleCourse = CourseModel::findOrFail($id);
-        $this->name = $this->singleCourse->name;
-        $this->price = $this->singleCourse->price;
-        $this->dispatch('showEditModal');
+//        $this->singleCourse = CourseModel::findOrFail($id);
+//        $this->name = $this->singleCourse->name;
+//        $this->price = $this->singleCourse->price;
+//        $this->dispatch('showEditModal');
     }
 
     public function update($id)
@@ -66,11 +68,9 @@ class Courses extends Component
 
     public function save()
     {
-        $validated = $this->validate([
-            'name' => 'required',
-            'price' => 'required',
-        ]);
-        CourseModel::create($validated);
+//        $this->validate();
+//        CourseModel::create($this->form->all());
+        $this->form->store();
         $this->dispatch('closeModal');
     }
 

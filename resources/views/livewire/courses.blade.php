@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col">
             <div class="d-flex justify-content-end">
-                {{-- <a href="{{ route('courses.create') }}" class="btn btn-success">create</a> --}}
-                <button wire:click='resetAll()' type="button" class="btn btn-primary" data-bs-toggle="modal"
+{{--                 <a href="{{ route('courses.create') }}" class="btn btn-success">create</a>--}}
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">
                     Create
                 </button>
@@ -74,23 +74,28 @@
                         <div class="row">
                             <div class="col">
                                 <section>
-                                    <form @if($singleCourse) wire:submit.prevent="update({{ $singleCourse->id }})" @else wire:submit.prevent="save" @endif>
+{{--                                    <form @if($singleCourse) wire:submit.prevent="update({{ $singleCourse->id }})" @else wire:submit.prevent="save" @endif>--}}
+                                        <form wire:submit.prevent="save">
                                         <div class="mb-3">
                                             <label class="form-label">Name : </label>
+{{--                                            <input type="text"--}}
+{{--                                                value="{{ $name ? $name : '' }}"--}}
+{{--                                                class="form-control" wire:model.change="name">--}}
                                             <input type="text"
-                                                value="{{ $name ? $name : '' }}"
-                                                class="form-control" wire:model.change="name">
-                                            @error('name')
+                                                   class="form-control" wire:model="form.name">
+                                            @error('form.name')
                                                 <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
                                                     {{ $message }}</span>
                                             @enderror
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Price : </label>
+{{--                                            <input type="text"--}}
+{{--                                                value="{{ $price ? $price : '' }}"--}}
+{{--                                                class="form-control" wire:model.change="price">--}}
                                             <input type="text"
-                                                value="{{ $price ? $price : '' }}"
-                                                class="form-control" wire:model.change="price">
-                                            @error('price')
+                                                   class="form-control" wire:model="form.price">
+                                            @error('form.price')
                                                 <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
                                                     {{ $message }}</span>
                                             @enderror
