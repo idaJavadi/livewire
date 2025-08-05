@@ -78,6 +78,19 @@ class Courses extends Component
         $this->dispatch('showModal');
     }
 
+    public function placeholder()
+    {
+        return <<<'HTML'
+    <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">در حال بارگذاری...</span>
+        </div>
+        <strong class="ms-3">لطفاً صبر کنید، در حال بارگذاری اطلاعات...</strong>
+    </div>
+HTML;
+    }
+
+
 
     public function render()
     {
