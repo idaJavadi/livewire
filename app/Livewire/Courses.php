@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 
 class Courses extends Component
 {
-    use WithPagination , WithoutUrlPagination;
+    use WithPagination  ;
 
     public $search = "";
     public $sort = true;

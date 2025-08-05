@@ -54,7 +54,7 @@
             </div>
 
             <section>
-                {{$courses->links()}}
+                {{$courses->links(data:['scrollTo'=>false])}}
             </section>
 
         </div>
