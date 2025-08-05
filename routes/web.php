@@ -24,3 +24,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/courses', Courses::class)->name('courses');
 Route::get('/courses/create', CreateCourse::class)->name('courses.create');
 Route::get('/courses/show/{course}', Course::class)->name('courses.show');
+Route::get('test', function(){
+    return 'a';
+})->name('my.test');

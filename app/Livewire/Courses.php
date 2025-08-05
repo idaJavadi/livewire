@@ -68,6 +68,8 @@ class Courses extends Component
     {
         $this->form->store();
         $this->dispatch('closeModal');
+//        $this->redirect('test');
+        $this->redirectIntended('home');
     }
 
     public function show($id)

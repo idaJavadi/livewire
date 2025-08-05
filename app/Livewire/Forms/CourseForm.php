@@ -27,6 +27,7 @@ class CourseForm extends Form
         $this->validate();
         Course::create($this->all());
         $this->reset();
+//        to_route('my.test');
     }
 
     public function update(){
