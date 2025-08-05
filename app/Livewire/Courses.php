@@ -2,34 +2,40 @@
 
 namespace App\Livewire;
 
-use App\Livewire\Forms\CourseForm;
-use App\Models\Course as CourseModel;
-use Livewire\Attributes\Url;
 use Livewire\Component;
-use Livewire\WithoutUrlPagination;
+use Livewire\Attributes\Js;
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
-
+use Livewire\Attributes\Validate;
+use App\Livewire\Forms\CourseForm;
+use Livewire\WithoutUrlPagination;
+use App\Models\Course as CourseModel;
+use Livewire\WithFileUploads;
 
 class Courses extends Component
 {
-    use WithPagination  ;
 
-//    #[Url]
-    public $search = "";
-
-    public $sort = true;
-
+    use WithFileUploads;
     public CourseForm $form;
 
-    protected function queryString(){
-        return [
-            'search' =>[
-                'as' => 'q'
-            ],
-            'history' => true
-        ];
-    }
 
+    public ?string $search = null;
+    public $sort = true;
+    public $courses;
+
+    // #[Validate('image|max:2000')]
+
+    public $photo;
+
+
+    public function mount()
+    {
+        if ($this->search) {
+            $this->courses = CourseModel::where('name', 'LIKE', "%{$this->search}%")->orderBy('id', $this->sort ? 'asc' : 'desc')->limit(20)->get();
+        } else {
+            $this->courses = CourseModel::orderBy('id', $this->sort ? 'asc' : 'desc')->limit(20)->get();
+        }
+    }
 
     public function delete($id)
     {
@@ -38,18 +44,21 @@ class Courses extends Component
         return 'Delete Course Was Successful';
     }
 
+    protected function queryString()
+    {
+        return [
+            'search' => [
+                'as' => 'q'
+            ]
+        ];
+    }
+
+
     public function changeStatus($value, $id)
     {
         $this->form->setSingleCourse($id);
         $this->form->updateStatus($value);
         $this->dispatch('showToast');
-    }
-
-    public function updated($name , $value){
-//        $name = explode(".", $name)[1];
-//        $this->form->singleCourse->update([
-//           $name => $value
-//        ]);
     }
 
     public function edit($id)
@@ -66,14 +75,17 @@ class Courses extends Component
 
     public function save()
     {
+
         $this->form->store();
+        // $this->photo->store('images','public');
+        $this->photo->store(path: 'images');
         $this->dispatch('closeModal');
-//        $this->redirect('test');
-        $this->redirectIntended('home');
+        session()->flash('courses_created', 'دوره با موفقیت ساخته شد');
     }
 
     public function show($id)
     {
+
         $this->form->setSingleCourse($id);
         $this->dispatch('showModal');
     }
@@ -81,20 +93,18 @@ class Courses extends Component
     public function placeholder()
     {
         return <<<'HTML'
-    <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-            <span class="visually-hidden">در حال بارگذاری...</span>
-        </div>
-        <strong class="ms-3">لطفاً صبر کنید، در حال بارگذاری اطلاعات...</strong>
-    </div>
-HTML;
+    <div class="spinner-border"></div>
+
+    HTML;
     }
+
+
+
 
 
 
     public function render()
     {
-        $courses = CourseModel::where('name', 'LIKE', "%{$this->search}%")->orderBy('id', $this->sort ? 'asc' : 'desc')->paginate(3);
-        return view('livewire.courses', compact('courses'));
+        return view('livewire.courses');
     }
 }

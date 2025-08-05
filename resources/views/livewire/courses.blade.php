@@ -53,9 +53,9 @@
 
             </div>
 
-            <section>
-                {{$courses->links(data:['scrollTo'=>false])}}
-            </section>
+{{--            <section>--}}
+{{--                {{$courses->links(data:['scrollTo'=>false])}}--}}
+{{--            </section>--}}
 
         </div>
     </div>
@@ -104,6 +104,11 @@
                                                 <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">
                                                     {{ $message }}</span>
                                             @enderror
+                                        </div>
+                                        <div class="mb3">
+                                            <input type="file" wire:model="photo">
+
+                                            @error('photo') <span class="error">{{ $message }}</span> @enderror
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>
 
