@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\CourseForm;
 use App\Models\Course as CourseModel;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -13,10 +14,22 @@ class Courses extends Component
 {
     use WithPagination  ;
 
+//    #[Url]
     public $search = "";
+
     public $sort = true;
 
     public CourseForm $form;
+
+    protected function queryString(){
+        return [
+            'search' =>[
+                'as' => 'q'
+            ],
+            'history' => true
+        ];
+    }
+
 
     public function delete($id)
     {
@@ -33,10 +46,10 @@ class Courses extends Component
     }
 
     public function updated($name , $value){
-        $name = explode(".", $name)[1];
-        $this->form->singleCourse->update([
-           $name => $value
-        ]);
+//        $name = explode(".", $name)[1];
+//        $this->form->singleCourse->update([
+//           $name => $value
+//        ]);
     }
 
     public function edit($id)
