@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Session;
 use Livewire\Component;
 use Livewire\Attributes\Js;
@@ -28,7 +29,6 @@ class Courses extends Component
     public $courses;
 
 
-    public $photo;
 
     public function download(){
          return response()->download(storage_path('img.png','ida.png'));
