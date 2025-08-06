@@ -8,6 +8,7 @@
                     Create
                 </button>
             </div>
+           <button class="btn btn-success" wire:click="download">download</button>
             <div>
                 <div class="col-4 mb-4">
                     <label for="">search : </label>
@@ -115,10 +116,10 @@
                                             @error('photo')
                                             <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">{{ $message }}</span>
                                             @enderror
-                                            @if($photo)
-                                                <img src="{{$photo->temporaryUrl()}}" width="100" height="100">
-                                            @endif
-                                            <div wire:loading wire:target="photo">uploading ...</div>
+{{--                                            @if($photo)--}}
+{{--                                                <img src="{{$photo->temporaryUrl()}}" width="100" height="100">--}}
+{{--                                            @endif--}}
+{{--                                            <div wire:loading wire:target="photo">uploading ...</div>--}}
 {{--                                            <div wire:click>cancle</div>--}}
                                         </div>
                                         <button type="submit" class="btn btn-primary">Submit</button>

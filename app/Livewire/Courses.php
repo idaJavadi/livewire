@@ -26,6 +26,10 @@ class Courses extends Component
 
     public $photo;
 
+    public function download(){
+         return response()->download(storage_path('img.png','ida.png'));
+    }
+
 
     public function mount()
     {
