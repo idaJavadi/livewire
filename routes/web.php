@@ -1,8 +1,7 @@
 <?php
 
-use App\Livewire\Course;
+use App\Http\Controllers\ProfileController;
 use App\Livewire\Courses;
-use App\Livewire\CreateCourse;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,14 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function(){
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Route::get('courses',Courses::class)->name('courses');
 
-Route::get('/courses', Courses::class)->name('courses');
-Route::get('/courses/create', CreateCourse::class)->name('courses.create');
-Route::get('/courses/show/{course}', Course::class)->name('courses.show');
-Route::get('test', function(){
-    return 'a';
-})->name('my.test');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';

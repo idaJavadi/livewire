@@ -22,7 +22,7 @@
                 {{session()->get('myCourses')}}
                 {{-- <livewire:create-post /> --}}
                 {{-- <livewire:course /> --}}
-                {{-- @livewire('Home')
+                {{-- @livewire('Dashboard')
                 <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1> --}}
 
             </div>

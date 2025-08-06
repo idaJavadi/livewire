@@ -25,7 +25,8 @@
                         <th>Status</th>
                         <th>Setting</th>
                     </tr>
-                    @foreach ($courses as $course)
+                    @if(auth()->user()->can_see_courses)
+                    @foreach ($this->myCourses as $course)
                         <tr>
                             <td>{{ $course->id }}</td>
                             <td>{{ $course->name }}</td>
@@ -49,6 +50,7 @@
                             </td>
                         </tr>
                     @endforeach
+                    @endif
 
                 </table>
 

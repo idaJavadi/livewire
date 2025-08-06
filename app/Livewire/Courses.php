@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Computed;
 use Livewire\Attributes\Session;
 use Livewire\Component;
 use Livewire\Attributes\Js;
@@ -36,11 +37,16 @@ class Courses extends Component
 
     public function mount()
     {
-        if ($this->search) {
-            $this->courses = CourseModel::where('name', 'LIKE', "%{$this->search}%")->orderBy('id', $this->sort ? 'asc' : 'desc')->limit(20)->get();
-        } else {
-            $this->courses = CourseModel::orderBy('id', $this->sort ? 'asc' : 'desc')->limit(20)->get();
-        }
+//        if ($this->search) {
+//            $this->courses = CourseModel::where('name', 'LIKE', "%{$this->search}%")->orderBy('id', $this->sort ? 'asc' : 'desc')->limit(20)->get();
+//        } else {
+//            $this->courses = CourseModel::orderBy('id', $this->sort ? 'asc' : 'desc')->limit(20)->get();
+//        }
+    }
+
+    #[Computed]
+    public function myCourses(){
+        return CourseModel::all();
     }
 
     public function delete($id)
