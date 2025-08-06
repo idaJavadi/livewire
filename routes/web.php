@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Courses;
+use App\Livewire\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('courses',Courses::class)->name('courses');
+
+Route::get('products/{product}',Product::class)->name('products');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
