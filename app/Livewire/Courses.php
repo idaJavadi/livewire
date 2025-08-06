@@ -23,9 +23,8 @@ class Courses extends Component
     public $sort = true;
     public $courses;
 
-    // #[Validate('image|max:2000')]
-    #[Validate(['photos.*' => 'image|max:1024'])]
-    public $photos = [];
+
+    public $photo;
 
 
     public function mount()
@@ -77,9 +76,8 @@ class Courses extends Component
     {
         $this->form->store();
 
-       foreach ($this->photos as $photo) {
-           $photo->store('images', 'public');
-       }
+
+        $this->photo->store('images', 'public');
 
         $this->dispatch('closeModal');
         session()->flash('courses_created', 'دوره با موفقیت ساخته شد');

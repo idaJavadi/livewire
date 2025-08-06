@@ -105,28 +105,22 @@
                                                     {{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <div class="mb-4">
-                                            <label class="form-label fw-bold">آپلود عکس‌ها</label>
-
+                                        <div class="mb-3">
+                                            <label class="form-label">Photos :</label>
                                             <input type="file"
-                                                   class="form-control shadow-sm @error('photos.*') is-invalid @enderror"
-                                                   wire:model="photos"
-                                                   multiple
-                                                   wire:dirty.class="border border-3 border-danger">
+                                                   class="form-control"
+                                                   wire:model="photo"
+                                                   wire:dirty.class="border border-4 border-danger">
 
-                                            {{-- پیام ذخیره‌نشده --}}
-                                            <div class="form-text text-warning mt-1" wire:dirty wire:target="photos">
-                                                <i class="bi bi-exclamation-triangle-fill me-1"></i> تغییرات ذخیره نشده‌اند.
-                                            </div>
-
-                                            {{-- خطاها --}}
-                                            @error('photos.*')
-                                            <div class="invalid-feedback d-block mt-2">
-                                                <i class="bi bi-x-circle me-1"></i> {{ $message }}
-                                            </div>
+                                            @error('photo')
+                                            <span class="text-bg-danger px-3 py-1 rounded my-2 d-inline-block">{{ $message }}</span>
                                             @enderror
+                                            @if($photo)
+                                                <img src="{{$photo->temporaryUrl()}}" width="100" height="100">
+                                            @endif
+                                            <div wire:loading wire:target="photo">uploading ...</div>
+{{--                                            <div wire:click>cancle</div>--}}
                                         </div>
-
                                         <button type="submit" class="btn btn-primary">Submit</button>
 
                                         <div wire:loading class="spinner-border" role="status">
