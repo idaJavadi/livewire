@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Session;
 use Livewire\Component;
 use Livewire\Attributes\Js;
 use Livewire\Attributes\Url;
@@ -21,6 +22,8 @@ class Courses extends Component
 
     public ?string $search = null;
     public $sort = true;
+
+    #[Session]
     public $courses;
 
 

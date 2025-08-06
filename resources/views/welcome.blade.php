@@ -19,6 +19,7 @@
     <div class="container border m-5 p-5">
         <div class="row">
             <div class="col">
+                {{session()->get('myCourses')}}
                 {{-- <livewire:create-post /> --}}
                 {{-- <livewire:course /> --}}
                 {{-- @livewire('Home')
@@ -27,6 +28,8 @@
             </div>
         </div>
     </div>
+
+
 
     @livewireScripts
 
