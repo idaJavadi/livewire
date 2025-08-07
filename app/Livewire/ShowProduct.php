@@ -8,6 +8,12 @@ class ShowProduct extends Component
 {
     public $productId = 1;
     public $productName = 2;
+
+    public function updating($property, $value){
+        if($property == 'productId' && $value < 1){
+            throw new \Exception('invalid product id');
+        }
+    }
 //    protected $product;
 
 
