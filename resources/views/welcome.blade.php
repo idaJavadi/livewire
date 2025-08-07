@@ -19,7 +19,9 @@
         <div class="col-auto">
 {{--            <a href="/about" wire:navigate class="btn btn-outline-primary mx-2">درباره ما</a>--}}
 {{--            <a href="/contact-us" wire:navigate class="btn btn-outline-primary mx-2">تماس با ما</a>--}}
-            @livewire('user-list')
+{{--            @livewire('user-list')--}}
+{{--            @livewire('user-list2');--}}
+            @livewire('messages');
         </div>
     </div>
 </div>
