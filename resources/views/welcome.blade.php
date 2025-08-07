@@ -23,7 +23,9 @@
 {{--            @livewire('user-list2');--}}
 {{--            @livewire('messages');--}}
 {{--            @livewire('user-list3')--}}
-            @livewire('message-list')
+{{--            @livewire('message-list')--}}
+{{--            @livewire('update-profile')--}}
+            @livewire('show-product')
         </div>
     </div>
 </div>

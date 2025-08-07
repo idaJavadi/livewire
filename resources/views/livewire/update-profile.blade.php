@@ -1,0 +1,16 @@
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{$name}}</td>
+                <td>{{$email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
