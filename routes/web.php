@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Livewire\About;
+use App\Livewire\Contact;
 use App\Livewire\Courses;
+use App\Livewire\EditProfile;
 use App\Livewire\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +24,11 @@ Route::get('/', function () {
 });
 
 Route::get('courses',Courses::class)->name('courses');
+
+Route::get('edit',EditProfile::class)->name('edit');
+
+Route::get('about',About::class)->name('about');
+Route::get('contact-us',Contact::class)->name('about');
 
 Route::get('products/{product}',Product::class)->name('products');
 

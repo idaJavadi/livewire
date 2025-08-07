@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ناوبری سایت</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet"
+          integrity="sha384-+qdLa9g4Y9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
+
     @livewireStyles
-
 </head>
 
-<body>
+<body class="bg-light">
 
-    <div class="container border m-5 p-5">
-        <div class="row">
-            <div class="col">
-                <livewire:country-city></livewire:country-city>
-            </div>
+<div class="container my-5 p-4 bg-white rounded shadow-sm text-center">
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="/about" wire:navigate class="btn btn-outline-primary mx-2">درباره ما</a>
+            <a href="/contact-us" wire:navigate class="btn btn-outline-primary mx-2">تماس با ما</a>
         </div>
     </div>
+</div>
 
-
-
-    @livewireScripts
+@livewireScripts
 
 </body>
 
