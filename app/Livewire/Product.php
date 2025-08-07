@@ -17,13 +17,13 @@ class Product extends Component
 
 
     public function mount(ProductModel $product){
-        $this->product = $product;
-//        $this->price = 1000;
-//        $this->height = 500;
-//        $this->color = "red";
-
-//        $this->fill(['price'=>100 ,'height'=>100 ,'color'=>'red']);
-        $this->fill($product->only('name','price','height','type','color'));
+//        $this->product = $product;
+////        $this->price = 1000;
+////        $this->height = 500;
+////        $this->color = "red";
+//
+////        $this->fill(['price'=>100 ,'height'=>100 ,'color'=>'red']);
+//        $this->fill($product->only('name','price','height','type','color'));
     }
     public function render()
     {
