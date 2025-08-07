@@ -21,7 +21,9 @@
 {{--            <a href="/contact-us" wire:navigate class="btn btn-outline-primary mx-2">تماس با ما</a>--}}
 {{--            @livewire('user-list')--}}
 {{--            @livewire('user-list2');--}}
-            @livewire('messages');
+{{--            @livewire('messages');--}}
+{{--            @livewire('user-list3')--}}
+            @livewire('message-list')
         </div>
     </div>
 </div>
