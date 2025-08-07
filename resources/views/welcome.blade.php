@@ -17,8 +17,9 @@
 <div class="container my-5 p-4 bg-white rounded shadow-sm text-center">
     <div class="row justify-content-center">
         <div class="col-auto">
-            <a href="/about" wire:navigate class="btn btn-outline-primary mx-2">درباره ما</a>
-            <a href="/contact-us" wire:navigate class="btn btn-outline-primary mx-2">تماس با ما</a>
+{{--            <a href="/about" wire:navigate class="btn btn-outline-primary mx-2">درباره ما</a>--}}
+{{--            <a href="/contact-us" wire:navigate class="btn btn-outline-primary mx-2">تماس با ما</a>--}}
+            @livewire('user-list')
         </div>
     </div>
 </div>
