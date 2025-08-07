@@ -19,13 +19,7 @@
     <div class="container border m-5 p-5">
         <div class="row">
             <div class="col">
-{{--                {{session()->get('myCourses')}}--}}
-                {{-- <livewire:create-post /> --}}
-                {{-- <livewire:course /> --}}
-                {{-- @livewire('Dashboard')
-                <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1> --}}
-{{--                  <livewire:product :price="243234"></livewire:product>--}}
-                <livewire:counter :initialCount="1"></livewire:counter>
+                <livewire:country-city></livewire:country-city>
             </div>
         </div>
     </div>
