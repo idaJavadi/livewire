@@ -28,8 +28,8 @@
 {{--            @livewire('show-product')--}}
 {{--            @livewire('user-profile')--}}
 {{--            @livewire('task-list')--}}
-{{--            <livewire:big></livewire:big>--}}
-            <livewire:to-do-list></livewire:to-do-list>
+            <livewire:big></livewire:big>
+{{--            <livewire:to-do-list></livewire:to-do-list>--}}
         </div>
     </div>
 </div>
