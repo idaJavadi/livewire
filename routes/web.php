@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Livewire\About;
+use App\Livewire\Admin\CategoryManager;
+use App\Livewire\Admin\PostManager;
 use App\Livewire\Contact;
 use App\Livewire\Courses;
 use App\Livewire\Dashboard;
@@ -25,16 +27,20 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
-Route::get('/' , Dashboard::class)->name('dashboard');
-Route::get('tasks', Tasks::class)->name('tasks');
-Route::get('about' , About::class)->name('about');
+Route::get('/admin/categories' , CategoryManager::class)->name('admin.categories');
+Route::get('/admin/posts' , PostManager::class)->name('admin.posts');
 
-Route::get('courses',Courses::class)->name('courses');
 
-Route::get('edit',EditProfile::class)->name('edit');
-
-Route::get('products/{product}',Product::class)->name('products');
-
+//Route::get('/' , Dashboard::class)->name('dashboard');
+//Route::get('tasks', Tasks::class)->name('tasks');
+//Route::get('about' , About::class)->name('about');
+//
+//Route::get('courses',Courses::class)->name('courses');
+//
+//Route::get('edit',EditProfile::class)->name('edit');
+//
+//Route::get('products/{product}',Product::class)->name('products');
+//
 
 //Route::get('/dashboard', function () {
 //    return view('dashboard');
