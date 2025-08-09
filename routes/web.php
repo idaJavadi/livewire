@@ -4,8 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Livewire\About;
 use App\Livewire\Contact;
 use App\Livewire\Courses;
+use App\Livewire\Dashboard;
 use App\Livewire\EditProfile;
 use App\Livewire\Product;
+use App\Livewire\Tasks;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,24 +20,25 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/' , Dashboard::class)->name('dashboard');
+Route::get('tasks', Tasks::class)->name('tasks');
+Route::get('about' , About::class)->name('about');
 
 Route::get('courses',Courses::class)->name('courses');
 
 Route::get('edit',EditProfile::class)->name('edit');
 
-Route::get('about',About::class)->name('about');
-Route::get('contact-us',Contact::class)->name('about');
-
 Route::get('products/{product}',Product::class)->name('products');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 //Route::middleware('auth')->group(function () {
 //    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
