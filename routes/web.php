@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Livewire\About;
 use App\Livewire\Admin\CategoryManager;
 use App\Livewire\Admin\PostManager;
+use App\Livewire\Blog\CategoryShow;
 use App\Livewire\Blog\Index;
+use App\Livewire\Blog\PostShow;
 use App\Livewire\Contact;
 use App\Livewire\Courses;
 use App\Livewire\Dashboard;
@@ -28,6 +30,9 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 Route::get('',Index::class)->name('home');
+Route::get('/post/{id}',PostShow::class)->name('post.show');
+Route::get('/category/{id}',CategoryShow::class)->name('category.show');
+
 Route::get('/admin/categories' , CategoryManager::class)->name('admin.categories');
 Route::get('/admin/posts' , PostManager::class)->name('admin.posts');
 
