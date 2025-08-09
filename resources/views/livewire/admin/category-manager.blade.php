@@ -1,7 +1,8 @@
 <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-    <div class="card-header bg-gradient text-white fw-bold d-flex align-items-center rounded-top-4">
+    <div class="card-header bg-primary bg-gradient text-white fw-bold d-flex align-items-center rounded-top-4">
         <i class="bi bi-folder-fill me-2 fs-5"></i> مدیریت دسته‌بندی‌ها
     </div>
+
 
     <div class="card-body bg-light">
         @if(session('message'))
